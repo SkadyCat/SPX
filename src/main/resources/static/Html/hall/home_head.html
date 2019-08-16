@@ -35,6 +35,8 @@
     });
     $(document).ready(function(){
 
+        $("#sendTask").attr("href",localStorage.getItem('system_site')+ "/static/Html/hall/upload_task_info_form.html");
+
         //----------post------------//
         $.post(localStorage.getItem('system_site')+'/getUserModel?user_acc='+localStorage.getItem("user_acc"),function(data){
             $("#levelICO").attr("src", "../../image/"+data.user_level+".jpeg");
@@ -98,6 +100,7 @@
 
 
        $(window).attr("location",localStorage.getItem("system_site")+"/Html/hall/upload_task_info_form.html");
+
     }
 
     </script>
@@ -147,7 +150,7 @@
 
         </dl>
     </li>
-    <li class="layui-nav-item"><a href=localStorage.getItem("system_site")+"/static/Html/hall/upload_task_info_form.html" >发布任务</a></li>
+    <li class="layui-nav-item"><a href="http://localhost:8099/static/Html/hall/upload_task_info_form.html" id="sendTask">发布任务</a></li>
 
 
 </ul>
