@@ -51,7 +51,7 @@ layui.use('table', function(){
   table.render({
     elem: '#test'
 
-    ,url:'http://localhost:8099/getTaskModelListFromType?type=算法'
+    ,url:localStorage.getItem("system_site")+'/getTaskModelListFromType?type=算法'
     ,toolbar: true
     ,title: '用户数据表'
     ,totalRow: true
@@ -129,7 +129,7 @@ layui.use('table', function(){
 
             return;
         }
-     $.post('http://localhost:8099/getCodeFromDB?id='+data.task_master_code,function(data2){
+     $.post(localStorage.getItem("system_site")+'/getCodeFromDB?id='+data.task_master_code,function(data2){
 
        var v  =  data2.code_value.replaceAll("@@#@@","'");
 
@@ -153,7 +153,7 @@ layui.use('table', function(){
 
             return;
         }
-     $.post('http://localhost:8099/getCodeFromDB?id='+data.task_solve_code,function(data2){
+     $.post(localStorage.getItem("system_site")+'/getCodeFromDB?id='+data.task_solve_code,function(data2){
 
 
          var v  =  data2.code_value.replaceAll("@@#@@","'");
@@ -226,7 +226,7 @@ layui.use('table', function(){
 
                  };
 
-                  $.post('http://localhost:8099/setTaskStatu',mg,function(data){
+                  $.post(localStorage.getItem("system_site")+'/setTaskStatu',mg,function(data){
                 alert(JSON.stringify(data));
                 window.location.reload();
             });
