@@ -114,7 +114,7 @@ layui.use('table', function(){
     }
     if(obj.event === 'task_master_code_view'){
 
-     $.post('http://localhost:8099/getCodeFromDB?id='+data.task_master_code,function(data2){
+     $.post(localStorage.getItem("system_site")+'/getCodeFromDB?id='+data.task_master_code,function(data2){
 
         $("#code_view").text(data2.code_value);
 
@@ -157,7 +157,7 @@ layui.use('table', function(){
 
             //http://localhost:8099/setTaskStatu
 
-            $.post('http://localhost:8099/setTaskStatu',mg,function(data){
+            $.post(localStorage.getItem("system_site")+'/setTaskStatu',mg,function(data){
                 alert(JSON.stringify(data));
                 window.location.reload();
             });
