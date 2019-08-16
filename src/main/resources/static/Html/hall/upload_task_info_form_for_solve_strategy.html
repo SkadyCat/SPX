@@ -273,7 +273,7 @@ form.on('submit(btnSubmit)', function (data) {
     var formData = data.field;
 
 
-    $.post("http://localhost:8099/ChangeTaskInfo",formData,function(d){
+    $.post(localStorage.getItem("system_site")+"/ChangeTaskInfo",formData,function(d){
 //
         alert('上传完毕！');
         $(window).attr('location',localStorage.getItem('loginkey'));

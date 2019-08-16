@@ -277,13 +277,13 @@ form.on('submit(btnSubmit)', function (data) {
 
     //-----------------------进行支付请求------------------------------//
      //
-     $.post("http://localhost:8099/payforpushtask?user_acc="+localStorage.getItem('user_acc')+"&value="+$("#task_reward").val()+"",function(data){
+     $.post(localStorage.getItem("system_site")+"/payforpushtask?user_acc="+localStorage.getItem('user_acc')+"&value="+$("#task_reward").val()+"",function(data){
 
         switch(data)
         {
             case "true":
 
-                    $.post("http://localhost:8099/requestDataTest",formData,function(d){
+                    $.post(localStorage.getItem("system_site")+'/requestDataTest",formData,function(d){
 
                      alert($("#task_reward").val()+'积分支付成功！');
                     $(window).attr('location',localStorage.getItem('loginkey'));
