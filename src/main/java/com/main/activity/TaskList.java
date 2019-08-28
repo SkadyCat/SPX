@@ -3,9 +3,8 @@ package com.main.activity;
 
 
 import com.alibaba.fastjson.JSONException;
-import com.main.DB.DataBaseOP;
+import com.main.dao.DataBaseOP;
 import com.main.Model.TaskModel;
-import com.main.Tool.GetRequestJsonUtils;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -14,13 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.List;
 
 @RestController
 public class TaskList {

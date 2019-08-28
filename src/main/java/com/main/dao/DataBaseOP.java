@@ -1,4 +1,4 @@
-package com.main.DB;
+package com.main.dao;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;

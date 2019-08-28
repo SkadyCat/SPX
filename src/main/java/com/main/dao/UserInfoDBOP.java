@@ -1,10 +1,9 @@
-package com.main.DB;
+package com.main.dao;
 
 import com.main.Model.UserModel;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
 import java.util.ArrayList;
 import java.util.List;

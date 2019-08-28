@@ -1,8 +1,8 @@
 package com.main.activity;
 
 
-import com.main.DB.DataBaseOP;
-import com.main.DB.UserInfoDBOP;
+import com.main.dao.DataBaseOP;
+import com.main.dao.UserInfoDBOP;
 import com.main.DynamicLayer.User;
 import com.main.Model.UserModel;
 import net.sf.json.JSONObject;

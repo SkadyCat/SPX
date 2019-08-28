@@ -1,18 +1,9 @@
 package com.main.activity;
 
 
-import com.main.DB.DataBaseOP;
-import com.main.DB.UserInfoDBOP;
 import com.main.DynamicLayer.User;
-import com.main.Model.UserModel;
-import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Random;
 
 @Controller
 public class UserActionForHtml {
