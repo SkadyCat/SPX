@@ -1,5 +1,6 @@
 package com.main.Tool;
 
+import com.sun.deploy.xml.XMLNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -17,6 +18,8 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class XMLTool {
 
@@ -34,11 +37,15 @@ public class XMLTool {
     Node heightNode ;
     Node root;
 
+    public List<Integer> labelList = new ArrayList<>();
+
 
     public XMLTool(String folder,String xmlName) throws IOException, SAXException, ParserConfigurationException {
         this.folder = folder;
         this.xmlName = xmlName;
         this.filePath = folder+xmlName;
+
+        Debug.Log("读取的xml文件 = "+this.filePath);
         xmlDocument = getXMLFile();
 
     }
@@ -124,8 +131,9 @@ public class XMLTool {
     }
 
 
-    public void addNewImage(int type) throws Exception {
+    public void addNewImage(int type,String fileName) throws Exception {
         Node lbNode = xmlDocument.createElement("lb");
+        ((Element) lbNode).setAttribute("fileName",fileName);
         lbNode.setTextContent(""+type);
         labelListNode.appendChild(lbNode);
         saveDocument(xmlDocument, this.filePath);
@@ -164,7 +172,14 @@ public class XMLTool {
         describeNode = root.getChildNodes().item(3);
         widthNode = sizeNode.getChildNodes().item(0);
         heightNode =sizeNode.getChildNodes().item(1);
+        for (int i = 0;i<labelListNode.getChildNodes().getLength();i++){
+            Debug.Log("读取数据 = "+labelListNode.getChildNodes().item(i).getAttributes().getNamedItem("fileName"));
 
+            Element el = (Element) labelListNode.getChildNodes().item(i);
+            labelList.add(new Integer(el.getAttribute("fileName")));
+
+
+        }
 
 
         return  document;

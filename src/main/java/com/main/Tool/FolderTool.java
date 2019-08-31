@@ -2,7 +2,9 @@ package com.main.Tool;
 
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.springframework.util.ClassUtils;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.sql.BatchUpdateException;
@@ -111,12 +113,17 @@ public class FolderTool {
      * @return
      * @throws IOException
      */
-    public static File madeTrainGroup(String folderPath,String name) throws IOException {
+    public static File madeTrainGroup(String folderPath,String name) throws IOException, ParserConfigurationException, SAXException {
         File file = new File(folderPath+"\\"+name);
 
         if (file.exists() == false){
 
             file.createNewFile();
+        }else {
+            file.delete();
+            file.createNewFile();
+
+
         }
 
         long configFileLenth = 0;
@@ -145,41 +152,42 @@ public class FolderTool {
             fileos.write(configBytes, 0, configLen);
 
         }
+        Debug.Log(folderPath+"\\Config.xml");
+        XMLTool tool = new XMLTool(FolderTool.getImageCollectorSubPath("superTask"),"\\Config.xml");
+
+
+    //F:\JAVAProj\spx\target\classes\static\ImageCollector\superTask
+        for (int key1:tool.labelList) {
+
+
+            for (String key:tempList) {
+
+                if (key.contains(key1+"") == false){
+                    Debug.Log("忽略 = "+key1+"<>"+key);
+                    continue;
+
+                }
+                Debug.Log("当前key = "+key1+"<>"+key);
+                Debug.Log(key);
+                File tempFile = new File(key);
+                FileInputStream fs = new FileInputStream(tempFile);
+
+
+                byte[] bytes = new byte[1024];
+                int len = 0;
+
+                while((len=fs.read(bytes))!=-1){
+                    fileos.write(bytes, 0, len);
+
+                }
 
 
 
-        for (String key:tempList
-             ) {
-
-            if (key.contains("xmb")){
-
-                continue;
-
+                fs.close();
             }
 
-
-            if (key.contains("Config")){
-
-                continue;
-
-            }
-            Debug.Log(key);
-             File tempFile = new File(key);
-             FileInputStream fs = new FileInputStream(tempFile);
-
-
-            byte[] bytes = new byte[1024];
-            int len = 0;
-
-            while((len=fs.read(bytes))!=-1){
-                fileos.write(bytes, 0, len);
-
-            }
-
-
-
-            fs.close();
         }
+
 
         fileos.close();
 

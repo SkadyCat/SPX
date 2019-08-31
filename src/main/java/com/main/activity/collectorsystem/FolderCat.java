@@ -36,9 +36,11 @@ public class FolderCat {
 
 
     @GetMapping("/clearFolder")
-    public void  clearFolder(String folderName) throws Exception {
+    public String  clearFolder(String folderName) throws Exception {
         String folderPath  = FolderTool.getImageCollectorSubPath(folderName);
         List<String > fileList = FolderTool.traverseFolderForFile(folderPath);
+
+
 
         for (String key:
              fileList) {
@@ -48,6 +50,8 @@ public class FolderCat {
         }
 
         new XMLTool().createConfigXml(folderPath);
+
+        return "success";
     }
 
 

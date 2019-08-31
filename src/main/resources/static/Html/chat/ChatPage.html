@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+
+            $("#emailBtn").click(function(){
+               $("#testLabel").html("email");
+
+
+            });
+             $("#scoreBtn").click(function(){
+               $("#testLabel").html("score");
+
+
+            });
+
+             $("#taskBtn").click(function(){
+               $("#testLabel").html("task");
+
+
+            });
+
+
+
+        });
+
+
+    </script>
+</head>
+<body >
+
+
+<div class="layui-bg-orange" style="width:250px;height:600px">
+
+
+    <div class="layui-bg-cyan"  style="width:250px;height:100px">
+
+            <div  style="float:right">
+
+                <button id = "emailBtn" type="button"class="layui-btn layui-btn-xs layui-btn-radius">邮件</button>
+                <button id = "scoreBtn" type="button"class="layui-btn layui-btn-xs layui-btn-radius">积分</button>
+                <button id = "taskBtn" type="button"class="layui-btn layui-btn-xs layui-btn-radius" >任务</button>
+            </div>
+
+
+        </div>
+    <div class="layui-row layui-bg-blue" style="width:250px;height:500px">
+
+
+        <p id="testLabel"></p>
+
+
+    </div>
+    </div>
+
+
+
+
+
+
+</body>
+</html>

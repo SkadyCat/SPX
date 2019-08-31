@@ -39,9 +39,11 @@ public class ImageCollector {
 
 
             XMLTool xmlTool = new XMLTool(FolderTool.getImageCollectorSubPath(folderName+"\\"),"Config.xml");
-            file.transferTo(new File(FolderTool.getImageCollectorSubPath(folderName+"\\")+xmlTool.labelListNode.getChildNodes().getLength()+".bmp"));
 
-            xmlTool.addNewImage(type);
+            int index = xmlTool.labelListNode.getChildNodes().getLength();
+            file.transferTo(new File(FolderTool.getImageCollectorSubPath(folderName+"\\")+index+".bmp"));
+
+            xmlTool.addNewImage(type,index+"");
 
             Debug.Log("数据接收完毕！");
         }
@@ -54,7 +56,7 @@ public class ImageCollector {
 
 
     @GetMapping("/trainGroup.xmb")
-    public void createTrainGroup(String folderName, HttpServletResponse request) throws IOException {
+    public void createTrainGroup(String folderName, HttpServletResponse request) throws IOException, ParserConfigurationException, SAXException {
 
        // FolderTool.traverseFolder(FolderTool.getImageCollectorSubPath("CircleFolder"));
         Debug.Log("打包开始！");
@@ -83,7 +85,7 @@ public class ImageCollector {
     }
 
     @GetMapping("/createTrainGroupNoResponse")
-    public String createTrainGroupNoResponse(String folderName, HttpServletResponse request) throws IOException {
+    public String createTrainGroupNoResponse(String folderName, HttpServletResponse request) throws IOException, ParserConfigurationException, SAXException {
 
         // FolderTool.traverseFolder(FolderTool.getImageCollectorSubPath("CircleFolder"));
         Debug.Log("打包开始！");
