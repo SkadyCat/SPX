@@ -45,6 +45,30 @@ public class DataBaseOP {
 
         return al;
     }
+    public static JSONArray request( String sqlValue) throws Exception {
+
+        String dataBase = dbName;
+        String URL="jdbc:sqlserver://47.106.227.238:1433;databaseName="+dataBase+"";
+        String USER="sa";
+        String PASSWORD="ljy2018.";
+        //1.加载驱动程序
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        //2.获得数据库链接
+        Connection conn= DriverManager.getConnection(URL, USER, PASSWORD);
+        //3.通过数据库的连接操作数据库，实现增删改查（使用Statement类）
+        Statement st=conn.createStatement();
+        ResultSet rs=st.executeQuery(sqlValue);
+        //4.处理数据库的返回结果(使用ResultSet类)
+
+        JSONArray al = formatRsToJsonArray(rs);
+        //关闭资源
+        rs.close();
+        st.close();
+        conn.close();
+
+        return al;
+    }
+
     public static void requestNoReturn(String dataBase, String sqlValue) throws Exception {
 
 
@@ -107,7 +131,14 @@ public class DataBaseOP {
         while(rs.next()) {
             JSONObject jsonObject = new JSONObject();//将每一个结果集放入到jsonObject对象中
             for(int i=1;i<=md.getColumnCount();i++) {
-                jsonObject.put(md.getColumnName(i), rs.getObject(i));//列值一一对应
+
+
+                Object objValue = rs.getObject(i);
+                Object mdOs = md.getColumnName(i);
+
+                jsonObject.put(mdOs, objValue);//列值一一对应
+
+
             }
             jsonArray.add(jsonObject);
         }

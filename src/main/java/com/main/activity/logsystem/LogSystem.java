@@ -4,11 +4,13 @@ package com.main.activity.logsystem;
 import com.main.Model.TaskModel;
 import com.main.Tool.JqueryRequestTool;
 import com.main.dao.DataBaseOP;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -36,4 +38,13 @@ public class LogSystem {
 
 
     }
+
+    @PostMapping("/getLog")
+
+    public JSONArray getLog() throws Exception {
+
+        return DataBaseOP.request("select * from task_log");
+
+    }
+
 }

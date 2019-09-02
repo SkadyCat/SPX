@@ -20,6 +20,11 @@
         logIndexInt = logIndexInt+2;
         localStorage.setItem("logIndex",logIndexInt+"");
 
+        $.post("http://localhost:8099/getLog",function (data) {
+           console.info(data[0]);
+
+        });
+
 
 
 
