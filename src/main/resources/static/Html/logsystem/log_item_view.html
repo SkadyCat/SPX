@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+
+    <script>
+
+        var logIndex = localStorage.getItem("logIndex");
+
+        var logPageValue = localStorage.getItem("logPageValue");
+
+
+        $("#l1").html("");
+
+
+        var logIndexInt = parseInt(logIndex);
+        logIndexInt = logIndexInt+2;
+        localStorage.setItem("logIndex",logIndexInt+"");
+
+
+
+
+
+
+
+
+    </script>
+
+</head>
+<body>
+<div style="padding: 20px; background-color: #F2F2F2;">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header">卡片面板</div>
+                <div class="layui-card-body">
+                    <p id="l1"> 结合 layui 的栅格系统
+                        轻松实现响应式布局</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md6">
+            <div class="layui-card">
+                <div class="layui-card-header">卡片面板</div>
+                <div class="layui-card-body" style="display:none" >
+                    <p id="l2"> 结合 layui 的栅格系统
+                        轻松实现响应式布局</p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
