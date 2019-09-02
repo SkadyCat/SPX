@@ -1,6 +1,5 @@
 package com.main.Tool;
 
-import com.sun.deploy.xml.XMLNode;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
