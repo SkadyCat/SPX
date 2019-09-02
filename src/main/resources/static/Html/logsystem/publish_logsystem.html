@@ -102,9 +102,14 @@
         <!-- 问题描述 -->
         <div class="lay-col-xs12" style="margin-top: 10px">
             <label >问题描述：</label>
-            <textarea id = "log_detail_input" placeholder="请输入内容" class="layui-textarea" style="margin-top: 5px;padding: 10px"></textarea>
+            <input name="describe" id = "log_detail_input" placeholder="请输入内容" class="layui-textarea" style="margin-top: 5px;padding: 10px"></input>
         </div>
 
+
+        <div class="lay-col-xs12" style="margin-top: 10px">
+            <label >解决策略</label>
+            <input name="solve_strategy" id = "log_solve_input" placeholder="请输入内容" class="layui-textarea" style="margin-top: 5px;padding: 10px"></input>
+        </div>
         <!-- 难度 -->
         <div class="lay-col-xs12" style="margin-top: 10px">
             <label >难度：</label>
@@ -130,8 +135,14 @@
                 </select>
             </div>
 
+            <div class="lay-col-xs12"  style="display:none" id="algorithm_select">
+                <select name="sub_type"  lay-filter = "select_log_type">
+                    <option value="信息隐藏">信息隐藏</option>
+                    <option value="深度学习">深度学习</option>
+                </select>
+            </div>
             <div class="lay-col-xs12"  style="display:none" id="web_front_select">
-                <select name="type"  lay-filter = "select_log_type">
+                <select name="sub_type"  lay-filter = "select_log_type">
                     <option value="layui">layui</option>
                     <option value="js">js</option>
                     <option value="css">css</option>
@@ -139,11 +150,12 @@
                 </select>
             </div>
             <div class="lay-col-xs12"  style="display:none" id="web_back_select">
-                <select name="type"  lay-filter = "select_log_type">
-                    <option value="layui">layui</option>
-                    <option value="js">js</option>
-                    <option value="css">css</option>
-                    <option value="html">html</option>
+                <select name="sub_type"  lay-filter = "select_log_type">
+                    <option value="springboot">springboot</option>
+                    <option value="springmvc">springmvc</option>
+                    <option value="serverlet">serverlet</option>
+                    <option value="dataSource">dataSource</option>
+                    <option value="netty">netty</option>
                 </select>
             </div>
         </div>
@@ -172,34 +184,42 @@
     layui.use('form', function(){
         var form = layui.form;
         //监听提交
-
+        var tmp = "";
 
         form.on('submit(demo1)', function(data){
             console.info(JSON.stringify(data.field));
+            var c = data.field;
 
-            $.post("http://localhost:8099/receiveLogValue",data.field,function(d){
+            console.info(data.field);
+            c.sub_type = tmp;
+            console.info(c);
+            $.post("http://localhost:8099/receiveLogValue",c,function(d){
                 alert('上传完毕！');
             });
             return false;
         });
 
         var selectArray = new Array();
-        selectArray[0] = "#web_front_select";
-        selectArray[1] = "#web_back_select";
+        selectArray[0] = $("#web_front_select");
+
+        selectArray[1] = $("#web_back_select");
+        selectArray[2] = $("#algorithm_select");
 
 
 
         form.on('select(select_log_type)', function(data){
 
             for(selectObject in selectArray){
+                selectArray[selectObject].attr("style","display:none")
+            }
+            console.info(data.elem.name);
+            if (data.elem.name == "sub_type"){
 
+                tmp = data.elem.value;
+                console.info("添加了data.value="+tmp);
 
-
-                console.info(selectArray[selectObject])
-                $(selectArray[selectObject]).attr("style","display:none")
             }
 
-            console.info(data.value);
             switch (data.value) {
 
                 case "web前端":
@@ -212,7 +232,8 @@
                     break;
 
                 case "算法":
-                    console.info("sssssssssssssssssss");
+                    $("#algorithm_select").attr("style","");
+
                     break;
 
             }
