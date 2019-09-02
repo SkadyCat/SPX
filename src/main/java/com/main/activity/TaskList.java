@@ -26,7 +26,7 @@ public class TaskList {
         String value = "{";
 
         Enumeration enuLen=request.getParameterNames();
-     Enumeration enu=request.getParameterNames();
+        Enumeration enu=request.getParameterNames();
 
         int num  = 0;
         while(enuLen.hasMoreElements()){
@@ -187,7 +187,7 @@ public class TaskList {
         int index= 0;
 
 
-        for(Object str:obj.keySet()) {
+            for(Object str:obj.keySet()) {
 
             if (index == obj.size() - 1){
                 value += str+" = '"+ obj.get(str)+"'";

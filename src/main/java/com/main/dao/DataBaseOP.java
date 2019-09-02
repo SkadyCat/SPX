@@ -66,6 +66,28 @@ public class DataBaseOP {
 
 
     }
+
+    public static void requestNoReturn( String sqlValue) throws Exception {
+
+        String dataBase = dbName;
+        String URL="jdbc:sqlserver://47.106.227.238:1433;databaseName="+dataBase+"";
+        String USER="sa";
+        String PASSWORD="ljy2018.";
+        //1.加载驱动程序
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        //2.获得数据库链接
+        Connection conn= DriverManager.getConnection(URL, USER, PASSWORD);
+        //3.通过数据库的连接操作数据库，实现增删改查（使用Statement类）
+        Statement st=conn.createStatement();
+        st.executeUpdate(sqlValue);
+        //4.处理数据库的返回结果(使用ResultSet类)
+
+
+        st.close();
+        conn.close();
+
+
+    }
     public static JSONObject requestSingle(String dataBase, String sqlValue) throws Exception {
 
 
