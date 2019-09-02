@@ -4,8 +4,6 @@ package com.main.activity.collectorsystem;
 import com.main.Tool.Debug;
 import com.main.Tool.FolderTool;
 import com.main.Tool.XMLTool;
-import com.sun.deploy.net.HttpRequest;
-import com.sun.deploy.net.HttpResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
