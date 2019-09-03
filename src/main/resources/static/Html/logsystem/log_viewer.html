@@ -42,38 +42,37 @@
 
 
         });
-
-
     </script>
 </head>
 
 <body>
 
 <div class="layui-row" id="container">
-    <div class="layui-col-md6">
-        <div class="layui-card">
-            <div class="layui-card-header">卡片面板</div>
-            <div class="layui-card-body" id="l1">
-            </div>
-        </div>
-    </div>
+
 </div>
 <script>
 
-    //$.post("http://localhost:8099/getLog",function (data) {
-//
-//
-    //    var requestValue = JSON.stringify(data);
-    //    //console.info(JSON.stringify(data));
-//
-    //    //var logIndex = localStorage.getItem("logIndex");
-    //    //var logPageValue = localStorage.getItem("logPageValue");
-    //    localStorage.setItem("logIndex","0");
-    //    localStorage.setItem("logPageValue",requestValue);
-//
-//
-//
-    //});
+   // a = $("#copyParent");
+
+   var htmlContent = "";
+
+
+
+
+
+    $.post("http://localhost:8099/getLog",function (data) {
+
+        var requestValue = JSON.stringify(data);
+        //console.info(JSON.stringify(data));
+
+        //var logIndex = localStorage.getItem("logIndex");
+        //var logPageValue = localStorage.getItem("logPageValue");
+        localStorage.setItem("logIndex","0");
+        localStorage.setItem("logPageValue",requestValue);
+        for (i=0;i<3;i++){
+            $("#container").append('<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" width="100%" height="130px" src="log_item_view.html"></iframe>');
+        }
+    });
  //  $("#container").html('<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" width="100%" height="100px" src="log_item_view.html"></iframe>')
  //  $("#container").html('<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" width="100%" height="100px" src="log_item_view.html"></iframe>')
  //  $("#container").html('<iframe name="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" width="100%" height="100px" src="log_item_view.html"></iframe>')
