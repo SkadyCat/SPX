@@ -27,7 +27,7 @@
         var uploadValue = $("#chatForm").serialize();
         var sendJson = seriValue2JSON(uploadValue);
         $("#textViewer").html("");
-        $.get("http://localhost:8099/onreceive",sendJson,function (data) {
+        $.get("http://47.106.227.238:8099/onreceive",sendJson,function (data) {
 
             var v = data.split('&');
             for (var x in v){
