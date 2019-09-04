@@ -2,8 +2,13 @@ package com.main.activity;
 
 
 import com.main.DynamicLayer.User;
+import com.main.Tool.JqueryRequestTool;
+import com.main.dao.DataBaseOP;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserActionForHtml {
@@ -41,6 +46,18 @@ public class UserActionForHtml {
     }
 
 
+    @PostMapping("/register")
+    public String reigster( HttpServletRequest request) throws Exception {
+
+
+        JqueryRequestTool tool = new JqueryRequestTool(request);
+
+        DataBaseOP.requestNoReturn(tool.getInsertSql("user_info",JqueryRequestTool.flushList()));
+
+        System.out.println("欢迎注册");
+        return "success";
+
+    }
 
 
 
