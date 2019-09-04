@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../../js/CommonTool.js"></script>
+</head>
+<body>
+
+<form id="chatForm">
+    账号：
+    <input name="user_acc" style="width: 200px;height: 25px;"><br>
+    聊室：
+    <input name="chat_id"style="width: 200px;height: 25px;"><br>
+    输入：
+    <input name="valueInput" style="width: 400px;height: 25px;">
+</form>
+
+
+<p id="textViewer" style="width: 800px;height: 400px;background: #00FF00">123</p>
+<input type="submit"  style="width: 200px;height: 25px;" id="submitBtn">
+
+<script>
+
+    $("#submitBtn").click(function () {
+        var uploadValue = $("#chatForm").serialize();
+        var sendJson = seriValue2JSON(uploadValue);
+        $("#textViewer").html("");
+        $.get("http://localhost:8099/onreceive",sendJson,function (data) {
+
+            var v = data.split('&');
+            for (var x in v){
+
+                $("#textViewer").append(v[x]+"<br>");
+
+            }
+
+
+
+        });
+        console.info(sendJson);
+    });
+
+
+</script>
+</body>
+</html>

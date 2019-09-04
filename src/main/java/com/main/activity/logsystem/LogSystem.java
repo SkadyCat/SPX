@@ -32,8 +32,6 @@ public class LogSystem {
         DataBaseOP.requestNoReturn(tool.getInsertSql("task_log",JqueryRequestTool.flushList()));
 
 
-
-
         System.out.println(new JqueryRequestTool(request).jsonValue);
 
 
