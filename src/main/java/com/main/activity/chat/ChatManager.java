@@ -87,7 +87,7 @@ public class ChatManager {
         LoginUser freind_user = UserActionForData.loginUserMap.get(user_friend);
 
         LoginUser master_user = UserActionForData.loginUserMap.get(user_acc);
-        XInfo info = master_user.findChatByFrindID(user_friend);
+        XInfo info = master_user.findChatByFrindID(user_friend,user_acc);
         //说明是失败的
         if(info.code == 200){
             Chat cht = createChat();

@@ -6,7 +6,10 @@ public class Chat {
 
     Map<String,String> chatMap = new HashMap<>();
 
+    //该房间里面所有的成员
     public List<String> userList = new ArrayList<>();
+    public String chatID;
+    public List<String> chatMessageList = new ArrayList<>();
 
     public  Chat(String key){
 
@@ -26,8 +29,6 @@ public class Chat {
         userList.add(user_acc);
 
     }
-    public String chatID;
-    public List<String> chatMessageList = new ArrayList<>();
 
     public String getMessage(){
 

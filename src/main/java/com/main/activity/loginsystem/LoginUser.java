@@ -14,16 +14,16 @@ public class LoginUser {
 
    public static Map<String, Chat> p2pMap = new HashMap<>();
 
-
    /**
     * 通过friendID去查找到是否存在该房间
     * @return
-    * 100->成功，说明myID有我的房间，我只需要获得这个房间号就行
-    * 200->失败，说明friend没有我的房间，我需要去创建这个房间号
+    *遍历所有房间，发现这个房间里面同时包含你和我，然后就返回这个房间。
+    *通常情况下这个房间时唯一的。
     */
-   public XInfo findChatByFrindID(String friendID){
-      XInfo info = new XInfo();
 
+   public XInfo findChatByFrindID(String friendID,String myself){
+      XInfo info = new XInfo();
+      int number = 0;
       for (String key :
               p2pMap.keySet()) {
 
@@ -32,6 +32,18 @@ public class LoginUser {
               ) {
 
             if (userAcc.equals(friendID)){
+
+               number++;
+
+            }
+
+            if (userAcc.equals(myself)){
+
+               number++;
+            }
+
+            if(number >=2){
+
                info.code = 100;
                info.arg1 = chat.chatID;
                return info;
@@ -52,7 +64,6 @@ public class LoginUser {
 
          p2pMap.put(chatID,chat);
       }
-
 
    }
 

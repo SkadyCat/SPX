@@ -3,7 +3,7 @@ package com.main.activity.info;
 public class XInfo {
 
     public  int code;
-
+    public  String arg1;
     public int getCode() {
         return code;
     }
@@ -20,5 +20,5 @@ public class XInfo {
         this.arg1 = arg1;
     }
 
-    public  String arg1;
+
 }

@@ -3,6 +3,7 @@ package com.main.activity.chat;
 public class ChatRevalue {
 
     public int code = 0;
+    public String reValue;
 
     public int getCode() {
         return code;
@@ -20,5 +21,5 @@ public class ChatRevalue {
         this.reValue = reValue;
     }
 
-    public String reValue;
+
 }
