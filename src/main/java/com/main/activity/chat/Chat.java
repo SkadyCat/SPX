@@ -5,16 +5,25 @@ import java.util.*;
 public class Chat {
 
     Map<String,String> chatMap = new HashMap<>();
+
+    public List<String> userList = new ArrayList<>();
+
     public  Chat(String key){
 
 
         this.chatID = key;
 
     }
+    public  Chat(){
+
+        UUID uuid =UUID.randomUUID();
+        this.chatID = uuid.toString();
+
+    }
 
     public void  addUser(String user_acc){
 
-        chatMap.put(user_acc,user_acc);
+        userList.add(user_acc);
 
     }
     public String chatID;

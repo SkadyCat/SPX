@@ -1,4 +1,4 @@
-package com.main.activity;
+package com.main.activity.loginsystem;
 
 
 import com.main.dao.DataBaseOP;
@@ -9,6 +9,8 @@ import net.sf.json.JSONObject;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 @RestController
@@ -19,6 +21,23 @@ public class UserActionForData {
 
     UserModel dbModel;
     JSONObject userJson;
+    public static Map<String, LoginUser> loginUserMap  = new HashMap<>();
+
+    @PostMapping("/loginNoneHtml")
+    public String login(String user_acc,String mode){
+
+        if (mode.equals("test")){
+
+            loginUserMap.put(user_acc,new LoginUser());
+            System.out.println("用户以test的方式登录！");
+
+        }
+
+
+
+        return "success";
+
+    }
 
     @PostMapping("/ss")
     public String getKey(String user_acc,String user_pwd) throws Exception {

@@ -1,4 +1,4 @@
-package com.main.activity;
+package com.main.activity.loginsystem;
 
 
 import com.main.DynamicLayer.User;
@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class UserActionForHtml {
 
     public static String randomValue = "456123";
-
 
 
     @GetMapping("/login")
