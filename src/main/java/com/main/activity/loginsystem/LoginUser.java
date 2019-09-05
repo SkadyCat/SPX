@@ -19,6 +19,8 @@ public class LoginUser {
     * @return
     *遍历所有房间，发现这个房间里面同时包含你和我，然后就返回这个房间。
     *通常情况下这个房间时唯一的。
+    *
+    * 做了一些奇怪的修改！
     */
 
    public XInfo findChatByFrindID(String friendID,String myself){
