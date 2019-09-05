@@ -21,6 +21,7 @@ public class LoginUser {
     *通常情况下这个房间时唯一的。
     *
     * 做了一些奇怪的修改！
+    * 做了一些奇怪的修改2
     */
 
    public XInfo findChatByFrindID(String friendID,String myself){
